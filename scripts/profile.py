@@ -18,7 +18,10 @@ SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,
 MONO = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace"
 DAILY_LIMIT = 10
 
-TAGS = ["CS @ UW '28", "ex-Affirm", "ex-Chipp", "ML research", "AI apps", "Flutter", "Python"]
+ROLES = ["CS @ UW", "SWE @ Affirm", "CSE TA @ UW", "SWE @ Chipp"]
+SKILLS = ["Python", "Go", "Java", "JavaScript", "TypeScript", "Dart", "Swift", "React", "Flutter",
+          "FastAPI", "PyTorch", "LangChain", "AWS", "Docker", "PostgreSQL"]
+TAGS = ROLES + SKILLS
 PROJECTS = [  # repo, title, one-liner, stack
     ("BookBroApp", "BookBro", "a spoiler-free AI companion for whatever you're reading", ["React", "LangChain", "FastAPI"]),
     ("aftertaste", "Aftertaste", "the carbon footprint of your food, from one photo", ["Flutter", "PyTorch", "Flask"]),
@@ -66,20 +69,34 @@ PENGUIN_CSS = """
 
 
 def header(t, st):
-    w, h, x = 880, 176, 170
-    pills, px = [], x
-    for tag in TAGS:
+    """Name, then role tags (filled) on the first row and skill tags (outlined) wrapping below."""
+    w, x = 880, 170
+    pills, px, y = [], x, 96
+
+    def pill(tag, filled):
+        nonlocal px, y
         tw = len(tag) * 7.8 + 22
-        pills.append(f'<rect x="{px}" y="96" width="{tw:.0f}" height="26" rx="13" fill="none" stroke="{t["line"]}"/>'
-                     f'<text x="{px + 11}" y="113.5" font-family="{MONO}" font-size="13" fill="{t["ink"]}" '
+        if px + tw > w - 4:
+            px, y = x, y + 34
+        fill = t["pill"] if filled else "none"
+        weight = ' font-weight="700"' if filled else ""
+        pills.append(f'<rect x="{px}" y="{y}" width="{tw:.0f}" height="26" rx="13" fill="{fill}" stroke="{t["line"]}"/>'
+                     f'<text x="{px + 11}" y="{y + 17.5}" font-family="{MONO}" font-size="13" fill="{t["ink"]}"{weight} '
                      f'textLength="{len(tag) * 7.8:.1f}" lengthAdjust="spacingAndGlyphs">{escape(tag)}</text>')
         px += tw + 8
-    n = st["count"]
-    fed = f"{n} fish eaten"
-    body = f"""<g transform="translate(80,158)">{penguin(t)}</g>
+
+    for tag in ROLES:
+        pill(tag, True)
+    px, y = x, y + 40
+    for tag in SKILLS:
+        pill(tag, False)
+    fed = f"{st['count']} fish eaten"
+    cy = y + 58
+    h = max(cy + 14, 176)
+    body = f"""<g transform="translate(80,{h // 2 + 55})">{penguin(t)}</g>
 <text x="{x}" y="70" font-family="{SANS}" font-size="40" font-weight="700" fill="{t['ink']}">Ishita Mundra</text>
 {''.join(pills)}
-<text x="{x}" y="156" font-family="{MONO}" font-size="13" fill="{t['muted']}">{escape(fed)}</text>"""
+<text x="{x}" y="{cy}" font-family="{MONO}" font-size="13" fill="{t['muted']}">{escape(fed)}</text>"""
     return svg(w, h, body, PENGUIN_CSS, f"Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {fed}.")
 
 

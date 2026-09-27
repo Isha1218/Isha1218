@@ -156,14 +156,14 @@ def render(st):
     # and caches by path, so a new name is the only way visitors see the new art right away.
     svgs = {f"header-{n}": header(t, st) for n, t in THEMES.items()}
     svgs.update({f"feed-{n}": button(t) for n, t in THEMES.items()})
+    svgs.update({f"card-{r.lower()}": card(r, *rest) for r, *rest in PROJECTS})
     v = hashlib.sha1("".join(svgs.values()).encode()).hexdigest()[:8]
-    for old in [*ASSETS.glob("header-*.svg"), *ASSETS.glob("feed-*.svg")]:
+    for old in [*ASSETS.glob("header-*.svg"), *ASSETS.glob("feed-*.svg"), *ASSETS.glob("card-*.svg")]:
         old.unlink()
     for name, body in svgs.items():
         (ASSETS / f"{name}-{v}.svg").write_text(body)
-    for p in PROJECTS:
-        (ASSETS / f"card-{p[0].lower()}.svg").write_text(card(*p))
-    README.write_text(splice(README.read_text(), st["count"], v))
+    text = re.sub(r"assets/card-([a-z]+)(?:-[0-9a-f]{8})?\.svg", rf"assets/card-\1-{v}.svg", README.read_text())
+    README.write_text(splice(text, st["count"], v))
 
 
 def feed(st, user):

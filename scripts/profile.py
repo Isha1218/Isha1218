@@ -19,15 +19,12 @@ MONO = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace"
 DAILY_LIMIT = 10
 
 ROLES = ["CS @ UW", "SWE @ Affirm", "CSE TA @ UW", "SWE @ Chipp"]
-SKILL_GROUPS = [  # each group starts a new row, most in-demand first
-    ["Python", "TypeScript", "JavaScript", "Go", "Java", "SQL", "Swift", "Dart", "C", "HTML/CSS"],
-    ["PyTorch", "LangChain", "RAG", "LLMs", "FAISS", "scikit-learn", "JAX", "NumPy", "Pandas", "OpenCV",
-     "MediaPipe", "Gemini API"],
-    ["React", "React Native", "Node.js", "FastAPI", "Flask", "Flutter"],
-    ["AWS", "EC2", "S3", "GCP", "Docker", "PostgreSQL", "Firebase", "Airflow", "Protobuf", "RPC", "Plaid",
-     "Git", "Unix/Linux", "HPC"],
+SKILLS = [  # one per kind of thing: languages, AI/ML, frameworks, infra
+    "Python", "TypeScript", "Go", "Java",
+    "PyTorch", "LangChain", "RAG", "scikit-learn", "OpenCV",
+    "React", "Flutter", "FastAPI",
+    "AWS", "Docker", "PostgreSQL", "Airflow",
 ]
-SKILLS = [s for group in SKILL_GROUPS for s in group]
 TAGS = ROLES + SKILLS
 PROJECTS = [  # repo, title, one-liner, stack
     ("BookBroApp", "BookBro", "EPUB reader you can ask questions about the book, without spoilers", ["React", "LangChain", "FastAPI"]),
@@ -102,11 +99,8 @@ def header(t, st):
     for tag in ROLES:
         pill(tag, True)
     px, y = x, y + 40
-    for i, group in enumerate(SKILL_GROUPS):
-        if i:
-            px, y = x, y + 42
-        for tag in group:
-            pill(tag, False)
+    for tag in SKILLS:
+        pill(tag, False)
     fed = f"{st['count']} fish eaten"
     cy = y + 58
     h = max(cy + 14, 176)

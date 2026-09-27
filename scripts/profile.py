@@ -108,13 +108,6 @@ def card(repo, title, blurb, stack):
     return svg(w, h, body, "", f"{title}: {blurb}. Built with {', '.join(stack)}.")
 
 
-def button():
-    body = (f'<rect x=".5" y=".5" width="219" height="35" rx="18" fill="{FISH}" fill-opacity=".12" stroke="{FISH}"/>'
-            f'<g transform="translate(26,18)"><ellipse rx="9" ry="4.5" fill="{FISH}"/><path d="M7,0 l7,-5 v10z" fill="{FISH}"/></g>'
-            f'<text x="48" y="23" font-family="{SANS}" font-size="14" font-weight="600" fill="{FISH}">feed the penguin a fish</text>')
-    return svg(220, 36, body, "", "feed the penguin a fish")
-
-
 def splice(text, n, v):
     return re.sub(r"(<!-- HEADER:START -->).*?(<!-- HEADER:END -->)", lambda m: f"""{m.group(1)}
 <picture>
@@ -136,7 +129,6 @@ def render(st):
         (ASSETS / f"header-{n}-{v}.svg").write_text(body)
     for p in PROJECTS:
         (ASSETS / f"card-{p[0].lower()}.svg").write_text(card(*p))
-    (ASSETS / "feed.svg").write_text(button())
     README.write_text(splice(README.read_text(), st["count"], v))
 
 

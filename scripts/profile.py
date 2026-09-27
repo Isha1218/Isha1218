@@ -137,7 +137,7 @@ def button(t):
 
 
 def splice(text, n, v):
-    issue = "https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish."
+    issue = "https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=Just+click+Create.+The+penguin+eats+in+about+30+seconds+and+this+issue+closes+itself."
     # the feed link must stay on one line: GitHub's markdown splits <a> around a multi-line <picture>
     return re.sub(r"(<!-- HEADER:START -->).*?(<!-- HEADER:END -->)", lambda m: f"""{m.group(1)}
 <picture>

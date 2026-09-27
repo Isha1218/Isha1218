@@ -4,7 +4,7 @@
   <img src="assets/header-light-07ab38fd.svg" width="100%" alt="Ishita Mundra. CS @ UW, SWE @ Affirm, CSE TA @ UW, SWE @ Chipp, Python, Go, Java, JavaScript, TypeScript, Dart, Swift, React, Flutter, FastAPI, PyTorch, LangChain, AWS, Docker, PostgreSQL. A penguin catching a fish; 3 fish eaten so far.">
 </picture>
 
-<a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish."><picture><source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-07ab38fd.svg"><img src="assets/feed-light-07ab38fd.svg" height="32" alt="Feed the penguin a fish"></picture></a>
+<a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=Just+click+Create.+The+penguin+eats+in+about+30+seconds+and+this+issue+closes+itself."><picture><source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-07ab38fd.svg"><img src="assets/feed-light-07ab38fd.svg" height="32" alt="Feed the penguin a fish"></picture></a>
 <!-- HEADER:END -->
 
 

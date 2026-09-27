@@ -18,7 +18,7 @@ SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,
 MONO = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace"
 DAILY_LIMIT = 10
 
-ROLES = ["CS @ UW", "SWE @ Affirm", "CSE TA @ UW", "SWE @ Chipp"]
+ROLES = ["CS @ UW", "prev SWE @ Affirm", "CSE TA @ UW", "prev SWE @ Chipp"]
 SKILLS = [  # one per kind of thing: languages, AI/ML, frameworks, infra
     "Python", "TypeScript", "Go", "Java",
     "PyTorch", "LangChain", "RAG", "scikit-learn", "OpenCV",

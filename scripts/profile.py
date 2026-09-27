@@ -108,20 +108,17 @@ def card(repo, title, blurb, stack):
     return svg(w, h, body, "", f"{title}: {blurb}. Built with {', '.join(stack)}.")
 
 
-def button(t, n):
-    """A GitHub-style button with a counter, like the Star button."""
-    label, count = "Feed the penguin", str(n)
-    lw, cw = len(label) * 7.6, len(count) * 7.6 + 14
-    w = 40 + lw + 12 + cw + 10
+def button(t):
+    """A GitHub-style button, like the Follow button."""
+    label = "Feed the penguin"
+    lw = len(label) * 7.6
+    w = 38 + lw + 14
     body = (f'<rect x=".5" y=".5" width="{w - 1:.0f}" height="31" rx="6" fill="{t["btn"]}" stroke="{t["line"]}"/>'
             f'<g transform="translate(20,16)"><ellipse rx="7.5" ry="4" fill="{t["ink"]}"/><path d="M6,0 l6,-4.5 v9z" fill="{t["ink"]}"/>'
             f'<circle cx="-3.5" cy="-.8" r="1.1" fill="{t["btn"]}"/></g>'
             f'<text x="38" y="21" font-family="{SANS}" font-size="14" font-weight="600" fill="{t["ink"]}" '
-            f'textLength="{lw:.1f}" lengthAdjust="spacingAndGlyphs">{label}</text>'
-            f'<rect x="{38 + lw + 10:.1f}" y="7" width="{cw:.1f}" height="18" rx="9" fill="{t["pill"]}"/>'
-            f'<text x="{38 + lw + 10 + cw / 2:.1f}" y="20.5" text-anchor="middle" font-family="{SANS}" font-size="12" '
-            f'font-weight="600" fill="{t["ink"]}">{count}</text>')
-    return svg(round(w), 32, body, "", f"Feed the penguin a fish. {n} fed so far.")
+            f'textLength="{lw:.1f}" lengthAdjust="spacingAndGlyphs">{label}</text>')
+    return svg(round(w), 32, body, "", "Feed the penguin a fish")
 
 
 def splice(text, n, v):
@@ -134,7 +131,7 @@ def splice(text, n, v):
 
 <a href="{issue}"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-{v}.svg">
-  <img src="assets/feed-light-{v}.svg" height="32" alt="Feed the penguin a fish ({n} so far)">
+  <img src="assets/feed-light-{v}.svg" height="32" alt="Feed the penguin a fish">
 </picture></a>
 {m.group(2)}""", text, flags=re.S)
 
@@ -144,7 +141,7 @@ def render(st):
     # Each version of the header gets its own filename: GitHub's image CDN ignores query strings
     # and caches by path, so a new name is the only way visitors see the new art right away.
     svgs = {f"header-{n}": header(t, st) for n, t in THEMES.items()}
-    svgs.update({f"feed-{n}": button(t, st["count"]) for n, t in THEMES.items()})
+    svgs.update({f"feed-{n}": button(t) for n, t in THEMES.items()})
     v = hashlib.sha1("".join(svgs.values()).encode()).hexdigest()[:8]
     for old in [*ASSETS.glob("header-*.svg"), *ASSETS.glob("feed-*.svg")]:
         old.unlink()

@@ -1,12 +1,12 @@
 <!-- HEADER:START -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-1e0aa44e.svg">
-  <img src="assets/header-light-1e0aa44e.svg" width="100%" alt="Ishita Mundra. CS @ UW '28, ex-Affirm, ex-Chipp, ML research, AI apps, Flutter, Python. A penguin catching a fish; 2 fish eaten so far.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-5c1473f5.svg">
+  <img src="assets/header-light-5c1473f5.svg" width="100%" alt="Ishita Mundra. CS @ UW '28, ex-Affirm, ex-Chipp, ML research, AI apps, Flutter, Python. A penguin catching a fish; 2 fish eaten so far.">
 </picture>
 
 <a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish."><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-1e0aa44e.svg">
-  <img src="assets/feed-light-1e0aa44e.svg" height="32" alt="Feed the penguin a fish (2 so far)">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-5c1473f5.svg">
+  <img src="assets/feed-light-5c1473f5.svg" height="32" alt="Feed the penguin a fish">
 </picture></a>
 <!-- HEADER:END -->
 

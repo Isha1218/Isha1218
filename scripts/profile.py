@@ -23,9 +23,9 @@ SKILLS = ["Python", "Go", "Java", "JavaScript", "TypeScript", "Dart", "Swift", "
           "FastAPI", "PyTorch", "LangChain", "AWS", "Docker", "PostgreSQL"]
 TAGS = ROLES + SKILLS
 PROJECTS = [  # repo, title, one-liner, stack
-    ("BookBroApp", "BookBro", "a spoiler-free AI companion for whatever you're reading", ["React", "LangChain", "FastAPI"]),
-    ("aftertaste", "Aftertaste", "the carbon footprint of your food, from one photo", ["Flutter", "PyTorch", "Flask"]),
-    ("bookflix", "Bookflix", "your next book, picked from the ones you loved", ["Flutter", "Flask", "Firebase"]),
+    ("BookBroApp", "BookBro", "EPUB reader you can ask questions about the book, without spoilers", ["React", "LangChain", "FastAPI"]),
+    ("aftertaste", "Aftertaste", "Estimates the CO2 footprint of a meal from a photo or barcode", ["Flutter", "PyTorch", "Flask"]),
+    ("bookflix", "Bookflix", "Book recommendations based on what you've already read and rated", ["Flutter", "Flask", "Firebase"]),
 ]
 THEMES = {
     "light": dict(ink="#1f2328", muted="#656d76", line="#d0d7de", body="#1f2328", belly="#ffffff", btn="#f6f8fa", pill="#e7ecf0"),
@@ -68,6 +68,13 @@ PENGUIN_CSS = """
 """
 
 
+def text_width(s, size=13):
+    """Rough width of text in a proportional sans font, so pills fit without distorting glyphs."""
+    narrow, wide = set("iljtfr.,:;'|!I @"), set("mwMW")
+    em = sum(.3 if c in narrow else .85 if c in wide else .68 if c.isupper() else .55 for c in s)
+    return em * size
+
+
 def header(t, st):
     """Name, then role tags (filled) on the first row and skill tags (outlined) wrapping below."""
     w, x = 880, 170
@@ -75,14 +82,14 @@ def header(t, st):
 
     def pill(tag, filled):
         nonlocal px, y
-        tw = len(tag) * 7.8 + 22
+        tw = text_width(tag) + 24
         if px + tw > w - 4:
             px, y = x, y + 34
         fill = t["pill"] if filled else "none"
-        weight = ' font-weight="700"' if filled else ""
+        weight = ' font-weight="600"' if filled else ""
         pills.append(f'<rect x="{px}" y="{y}" width="{tw:.0f}" height="26" rx="13" fill="{fill}" stroke="{t["line"]}"/>'
-                     f'<text x="{px + 11}" y="{y + 17.5}" font-family="{MONO}" font-size="13" fill="{t["ink"]}"{weight} '
-                     f'textLength="{len(tag) * 7.8:.1f}" lengthAdjust="spacingAndGlyphs">{escape(tag)}</text>')
+                     f'<text x="{px + tw / 2:.1f}" y="{y + 17.5}" text-anchor="middle" font-family="{SANS}" font-size="13" '
+                     f'fill="{t["ink"]}"{weight}>{escape(tag)}</text>')
         px += tw + 8
 
     for tag in ROLES:
@@ -94,31 +101,27 @@ def header(t, st):
     cy = y + 58
     h = max(cy + 14, 176)
     body = f"""<g transform="translate(80,{h // 2 + 55})">{penguin(t)}</g>
-<text x="{x}" y="70" font-family="{SANS}" font-size="40" font-weight="700" fill="{t['ink']}">Ishita Mundra</text>
+<text x="{x}" y="70" font-family="{SANS}" font-size="34" font-weight="600" fill="{t['ink']}">Ishita Mundra</text>
 {''.join(pills)}
-<text x="{x}" y="{cy}" font-family="{MONO}" font-size="13" fill="{t['muted']}">{escape(fed)}</text>"""
+<text x="{x}" y="{cy}" font-family="{SANS}" font-size="13" fill="{t['muted']}">{escape(fed)}</text>"""
     return svg(w, h, body, PENGUIN_CSS, f"Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {fed}.")
 
 
 def card(repo, title, blurb, stack):
     # title matches the penguin's beak and feet
     w, h = 300, 150
-    bx, tags = 20, []
-    for s in stack:
-        tw = len(s) * 7.2 + 18
-        tags.append(f'<rect x="{bx}" y="110" width="{tw:.0f}" height="22" rx="11" fill="#21262d"/>'
-                    f'<text x="{bx + 9}" y="125" font-family="{MONO}" font-size="12" fill="#c9d1d9" '
-                    f'textLength="{len(s) * 7.2:.1f}" lengthAdjust="spacingAndGlyphs">{s}</text>')
-        bx += tw + 6
+    dot = {"React": "#f1e05a", "Flutter": "#00B4AB"}[stack[0]]
+    tags = [f'<circle cx="26" cy="120" r="6" fill="{dot}"/>'
+            f'<text x="38" y="125" font-family="{SANS}" font-size="13" fill="#9198a1">{" · ".join(stack)}</text>']
     words, lines, cur = blurb.split(), [], ""
     for wd in words:  # wrap at ~36 chars
-        if len(cur) + len(wd) + 1 > 36:
+        if len(cur) + len(wd) + 1 > 38:
             lines.append(cur); cur = wd
         else:
             cur = f"{cur} {wd}".strip()
     lines.append(cur)
     text = "".join(f'<text x="20" y="{70 + i * 19}" font-family="{SANS}" font-size="14" fill="#9198a1">{escape(l)}</text>'
-                   for i, l in enumerate(lines[:2]))
+                   for i, l in enumerate(lines[:3]))
     body = f"""<rect x=".5" y=".5" width="{w - 1}" height="{h - 1}" rx="10" fill="#0d1117" stroke="#30363d"/>
 <g transform="translate(20,26)" fill="{ORANGE}"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></g>
 <text x="44" y="39" font-family="{SANS}" font-size="17" font-weight="700" fill="{ORANGE}">{title}</text>

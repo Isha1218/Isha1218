@@ -129,11 +129,9 @@ def button(t):
     """A GitHub-style button, like the Follow button."""
     label = "Feed the penguin"
     lw = len(label) * 7.6
-    w = 38 + lw + 14
+    w = lw + 32
     body = (f'<rect x=".5" y=".5" width="{w - 1:.0f}" height="31" rx="6" fill="{t["btn"]}" stroke="{t["line"]}"/>'
-            f'<g transform="translate(20,16)"><ellipse rx="7.5" ry="4" fill="{t["ink"]}"/><path d="M6,0 l6,-4.5 v9z" fill="{t["ink"]}"/>'
-            f'<circle cx="-3.5" cy="-.8" r="1.1" fill="{t["btn"]}"/></g>'
-            f'<text x="38" y="21" font-family="{SANS}" font-size="14" font-weight="600" fill="{t["ink"]}" '
+            f'<text x="16" y="21" font-family="{SANS}" font-size="14" font-weight="600" fill="{t["ink"]}" '
             f'textLength="{lw:.1f}" lengthAdjust="spacingAndGlyphs">{label}</text>')
     return svg(round(w), 32, body, "", "Feed the penguin a fish")
 

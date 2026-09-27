@@ -3,6 +3,7 @@
   python3 scripts/profile.py            redraw everything from data/fish.json
   python3 scripts/profile.py --feed     (in the Action) count a fish from ISSUE_USER, write reply.md
 """
+import hashlib
 import json
 import os
 import re
@@ -114,11 +115,11 @@ def button():
     return svg(220, 36, body, "", "feed the penguin a fish")
 
 
-def splice(text, n):
+def splice(text, n, v):
     return re.sub(r"(<!-- HEADER:START -->).*?(<!-- HEADER:END -->)", lambda m: f"""{m.group(1)}
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg?v={n}">
-  <img src="assets/header-light.svg?v={n}" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {n} fish eaten so far.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg?v={v}">
+  <img src="assets/header-light.svg?v={v}" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {n} fish eaten so far.">
 </picture>
 {m.group(2)}""", text, flags=re.S)
 
@@ -130,7 +131,9 @@ def render(st):
     for p in PROJECTS:
         (ASSETS / f"card-{p[0].lower()}.svg").write_text(card(*p))
     (ASSETS / "feed.svg").write_text(button())
-    README.write_text(splice(README.read_text(), st["count"]))
+    # the version string changes whenever the art does, so GitHub's image cache can't serve a stale header
+    v = hashlib.sha1(b"".join((ASSETS / f"header-{n}.svg").read_bytes() for n in THEMES)).hexdigest()[:8]
+    README.write_text(splice(README.read_text(), st["count"], v))
 
 
 def feed(st, user):

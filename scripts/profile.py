@@ -36,16 +36,19 @@ def svg(w, h, body, css, label):
 
 
 def penguin(t):
-    """Flat penguin, feet at (0,0), ~120 tall. A fish arcs into its beak every few seconds."""
+    """Chubby flat penguin, feet at (0,0), ~105 tall. A fish arcs into its beak every few seconds."""
     return f"""<g class="gulp">
-<ellipse cx="0" cy="-58" rx="40" ry="56" fill="{t['body']}"/>
-<ellipse cx="0" cy="-46" rx="28" ry="38" fill="{t['belly']}"/>
-<ellipse cx="-38" cy="-54" rx="10" ry="26" fill="{t['body']}" transform="rotate(16 -38 -54)"/>
-<ellipse cx="38" cy="-54" rx="10" ry="26" fill="{t['body']}" transform="rotate(-16 38 -54)"/>
-<circle class="blink" cx="-12" cy="-90" r="4.5" fill="{t['belly']}"/><circle class="blink" cx="12" cy="-90" r="4.5" fill="{t['belly']}"/>
-<path d="M-8,-82 L8,-82 L0,-71Z" fill="{ORANGE}"/>
-<ellipse cx="-14" cy="-2" rx="13" ry="5" fill="{ORANGE}"/><ellipse cx="14" cy="-2" rx="13" ry="5" fill="{ORANGE}"/></g>
-<g class="fish"><ellipse cx="0" cy="0" rx="11" ry="5.5" fill="{FISH}"/><path d="M9,0 l9,-6 v12z" fill="{FISH}"/></g>"""
+<ellipse cx="-43" cy="-40" rx="8" ry="17" fill="{t['body']}" transform="rotate(28 -43 -40)"/>
+<ellipse cx="43" cy="-40" rx="8" ry="17" fill="{t['body']}" transform="rotate(-28 43 -40)"/>
+<ellipse cx="0" cy="-50" rx="46" ry="50" fill="{t['body']}"/>
+<path d="M-3,-99 q3,-12 12,-8 q-7,1 -6,8z" fill="{t['body']}"/>
+<g fill="{t['belly']}"><circle cx="-14" cy="-62" r="20"/><circle cx="14" cy="-62" r="20"/><ellipse cx="0" cy="-34" rx="33" ry="31"/></g>
+<g class="blink"><ellipse cx="-14" cy="-63" rx="6.5" ry="7.5" fill="#1f2328"/><ellipse cx="14" cy="-63" rx="6.5" ry="7.5" fill="#1f2328"/></g>
+<circle cx="-11.5" cy="-66" r="2.4" fill="#fff"/><circle cx="16.5" cy="-66" r="2.4" fill="#fff"/>
+<ellipse cx="-26" cy="-51" rx="6.5" ry="3.8" fill="#ffadbd" opacity=".85"/><ellipse cx="26" cy="-51" rx="6.5" ry="3.8" fill="#ffadbd" opacity=".85"/>
+<path d="M-6,-55 q6,-4 12,0 q-6,7 -12,0z" fill="{ORANGE}"/>
+<ellipse cx="-15" cy="-2" rx="11" ry="4.5" fill="{ORANGE}"/><ellipse cx="15" cy="-2" rx="11" ry="4.5" fill="{ORANGE}"/></g>
+<g class="fish"><ellipse cx="0" cy="0" rx="10" ry="5" fill="{FISH}"/><path d="M8,0 l8,-5.5 v11z" fill="{FISH}"/></g>"""
 
 
 PENGUIN_CSS = """
@@ -56,7 +59,7 @@ PENGUIN_CSS = """
 .fish{animation:toss 4s ease-in infinite}
 @keyframes toss{0%{transform:translate(90px,-20px) rotate(0);opacity:0}
 10%{opacity:1}30%{transform:translate(60px,-120px) rotate(-140deg)}
-52%{transform:translate(4px,-78px) rotate(-200deg);opacity:1}54%,100%{transform:translate(4px,-78px);opacity:0}}
+52%{transform:translate(4px,-56px) rotate(-200deg);opacity:1}54%,100%{transform:translate(4px,-56px);opacity:0}}
 @media (prefers-reduced-motion:reduce){.gulp,.blink,.fish{animation:none}.fish{opacity:0}}
 """
 
@@ -72,7 +75,7 @@ def header(t, st):
         px += tw + 8
     n, last = st["count"], st.get("last")
     fed = f"{n} fish eaten" + (f" · last one from @{last}" if last else " · be the first")
-    body = f"""<g transform="translate(78,160)">{penguin(t)}</g>
+    body = f"""<g transform="translate(80,158)">{penguin(t)}</g>
 <text x="{x}" y="70" font-family="{SANS}" font-size="40" font-weight="700" fill="{t['ink']}">Ishita Mundra</text>
 {''.join(pills)}
 <text x="{x}" y="156" font-family="{MONO}" font-size="13" fill="{t['muted']}">{escape(fed)}</text>"""

@@ -7,6 +7,7 @@
 
 <sub><a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish.">feed the penguin</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/ishita-mundra">linkedin</a> &nbsp;·&nbsp; <a href="mailto:ishita.mundra@gmail.com">email</a></sub>
 
+<br>
 
 <p>
   <a href="https://github.com/Isha1218/BookBroApp"><img src="assets/card-bookbroapp.svg" width="32%" alt="BookBro: a spoiler-free AI companion for whatever you're reading. React, LangChain, FastAPI."></a>

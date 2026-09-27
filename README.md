@@ -1,7 +1,7 @@
 <!-- HEADER:START -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg?v=1">
-  <img src="assets/header-light.svg?v=1" width="100%" alt="Ishita Mundra. CS @ UW '28, ex-Affirm, ex-Chipp, ML research, AI apps, Flutter, Python. A penguin catching a fish; 1 fish eaten so far.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg?v=2">
+  <img src="assets/header-light.svg?v=2" width="100%" alt="Ishita Mundra. CS @ UW '28, ex-Affirm, ex-Chipp, ML research, AI apps, Flutter, Python. A penguin catching a fish; 2 fish eaten so far.">
 </picture>
 <!-- HEADER:END -->
 

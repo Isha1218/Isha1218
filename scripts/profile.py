@@ -19,8 +19,12 @@ MONO = "ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace"
 DAILY_LIMIT = 10
 
 ROLES = ["CS @ UW", "SWE @ Affirm", "CSE TA @ UW", "SWE @ Chipp"]
-SKILLS = ["Python", "Go", "Java", "JavaScript", "TypeScript", "Dart", "Swift", "React", "Flutter",
-          "FastAPI", "PyTorch", "LangChain", "AWS", "Docker", "PostgreSQL"]
+SKILLS = [  # languages, then frameworks & libraries, then infra & tools
+    "Python", "Go", "Java", "JavaScript", "TypeScript", "Dart", "Swift", "C", "SQL", "HTML/CSS",
+    "React", "Node.js", "Flutter", "FastAPI", "Flask", "PyTorch", "JAX", "scikit-learn", "Pandas", "NumPy",
+    "LangChain", "FAISS",
+    "AWS", "GCP", "Docker", "PostgreSQL", "Airflow", "Protobuf", "Plaid", "Git", "Linux",
+]
 TAGS = ROLES + SKILLS
 PROJECTS = [  # repo, title, one-liner, stack
     ("BookBroApp", "BookBro", "EPUB reader you can ask questions about the book, without spoilers", ["React", "LangChain", "FastAPI"]),

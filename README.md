@@ -13,7 +13,7 @@ I build apps that make things people already love a little smarter, mostly **boo
 pip lives on this profile and survives entirely on snacks from visitors. every button below opens a GitHub issue. hit **Submit** and a GitHub Action feeds pip, redraws it, and closes your issue with a thank-you and a penguin fact. feed pip enough and it levels up.
 
 <!-- PIP:IMG:START -->
-<p align="center"><img src="assets/pip.svg?v=0" width="100%" alt="Pip the penguin, who has eaten 0 snacks so far"></p>
+<p align="center"><img src="assets/pip.svg?v=1" width="100%" alt="Pip the penguin, who has eaten 1 snacks so far"></p>
 <!-- PIP:IMG:END -->
 
 <p align="center">
@@ -25,12 +25,12 @@ pip lives on this profile and survives entirely on snacks from visitors. every b
 
 **recent snacks**
 <!-- PIP:LOG:START -->
-_nobody yet. be the first!_
+- `2026-09-27` 🐟 **@Isha1218** gave Pip a fish
 <!-- PIP:LOG:END -->
 
 **top feeders:**
 <!-- PIP:BOARD:START -->
-_the podium is empty_
+🥇 **@Isha1218** (1)
 <!-- PIP:BOARD:END -->
 
 <details>

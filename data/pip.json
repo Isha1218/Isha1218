@@ -1,15 +1,29 @@
 {
  "counts": {
-  "fish": 0,
+  "fish": 1,
   "krill": 0,
   "book": 0,
   "snowball": 0
  },
- "feeders": {},
- "log": [],
- "today": {
-  "date": "",
-  "users": {}
+ "feeders": {
+  "Isha1218": 1
  },
- "last": null
+ "log": [
+  {
+   "date": "2026-09-27",
+   "user": "Isha1218",
+   "snack": "fish"
+  }
+ ],
+ "today": {
+  "date": "2026-09-27",
+  "users": {
+   "Isha1218": 1
+  }
+ },
+ "last": {
+  "user": "Isha1218",
+  "snack": "fish",
+  "reaction": "10/10 fish. would eat again"
+ }
 }

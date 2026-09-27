@@ -80,7 +80,7 @@ def header(t, st):
             px, y = x, y + 34
         fill = t["pill"] if filled else "none"
         weight = ' font-weight="700"' if filled else ""
-        pills.append(f'<rect x="{px}" y="{y}" width="{tw:.0f}" height="26" rx="13" fill="{fill}" stroke="{ORANGE if filled else t["line"]}"/>'
+        pills.append(f'<rect x="{px}" y="{y}" width="{tw:.0f}" height="26" rx="13" fill="{fill}" stroke="{t["line"]}"/>'
                      f'<text x="{px + 11}" y="{y + 17.5}" font-family="{MONO}" font-size="13" fill="{t["ink"]}"{weight} '
                      f'textLength="{len(tag) * 7.8:.1f}" lengthAdjust="spacingAndGlyphs">{escape(tag)}</text>')
         px += tw + 8
@@ -137,13 +137,6 @@ def button(t):
     return svg(round(w), 32, body, "", "Feed the penguin a fish")
 
 
-def link(label):
-    lw = len(label) * 7.4
-    body = (f'<text x="0" y="14" font-family="{SANS}" font-size="14" font-weight="600" fill="{ORANGE}" '
-            f'textLength="{lw:.1f}" lengthAdjust="spacingAndGlyphs">{label}</text>')
-    return svg(round(lw) + 2, 20, body, "", label)
-
-
 def splice(text, n, v):
     issue = "https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=Just+click+Create.+The+penguin+eats+in+about+30+seconds+and+this+issue+closes+itself."
     # the feed link must stay on one line: GitHub's markdown splits <a> around a multi-line <picture>
@@ -164,13 +157,12 @@ def render(st):
     svgs = {f"header-{n}": header(t, st) for n, t in THEMES.items()}
     svgs.update({f"feed-{n}": button(t) for n, t in THEMES.items()})
     svgs.update({f"card-{r.lower()}": card(r, *rest) for r, *rest in PROJECTS})
-    svgs.update({f"link-{name}": link(name) for name in ("linkedin", "email")})
     v = hashlib.sha1("".join(svgs.values()).encode()).hexdigest()[:8]
-    for old in [*ASSETS.glob("header-*.svg"), *ASSETS.glob("feed-*.svg"), *ASSETS.glob("card-*.svg"), *ASSETS.glob("link-*.svg")]:
+    for old in [*ASSETS.glob("header-*.svg"), *ASSETS.glob("feed-*.svg"), *ASSETS.glob("card-*.svg")]:
         old.unlink()
     for name, body in svgs.items():
         (ASSETS / f"{name}-{v}.svg").write_text(body)
-    text = re.sub(r"assets/(card|link)-([a-z]+)(?:-[0-9a-f]{8})?\.svg", rf"assets/\1-\2-{v}.svg", README.read_text())
+    text = re.sub(r"assets/card-([a-z]+)(?:-[0-9a-f]{8})?\.svg", rf"assets/card-\1-{v}.svg", README.read_text())
     README.write_text(splice(text, st["count"], v))
 
 

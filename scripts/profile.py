@@ -74,8 +74,8 @@ def header(t, st):
                      f'<text x="{px + 11}" y="113.5" font-family="{MONO}" font-size="13" fill="{t["ink"]}" '
                      f'textLength="{len(tag) * 7.8:.1f}" lengthAdjust="spacingAndGlyphs">{escape(tag)}</text>')
         px += tw + 8
-    n, last = st["count"], st.get("last")
-    fed = f"{n} fish eaten" + (f" · last one from @{last}" if last else " · be the first")
+    n = st["count"]
+    fed = f"{n} fish eaten"
     body = f"""<g transform="translate(80,158)">{penguin(t)}</g>
 <text x="{x}" y="70" font-family="{SANS}" font-size="40" font-weight="700" fill="{t['ink']}">Ishita Mundra</text>
 {''.join(pills)}

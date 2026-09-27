@@ -25,8 +25,8 @@ PROJECTS = [  # repo, title, one-liner, stack
     ("bookflix", "Bookflix", "your next book, picked from the ones you loved", ["Flutter", "Flask", "Firebase"]),
 ]
 THEMES = {
-    "light": dict(ink="#1f2328", muted="#656d76", line="#d0d7de", body="#1f2328", belly="#ffffff"),
-    "dark": dict(ink="#e6edf3", muted="#8d96a0", line="#3d444d", body="#3d444d", belly="#f0f3f6"),
+    "light": dict(ink="#1f2328", muted="#656d76", line="#d0d7de", body="#1f2328", belly="#ffffff", btn="#f6f8fa", pill="#e7ecf0"),
+    "dark": dict(ink="#e6edf3", muted="#8d96a0", line="#3d444d", body="#3d444d", belly="#f0f3f6", btn="#21262d", pill="#2f363e"),
 }
 ORANGE, FISH = "#f59e0b", "#38bdf8"
 
@@ -108,12 +108,34 @@ def card(repo, title, blurb, stack):
     return svg(w, h, body, "", f"{title}: {blurb}. Built with {', '.join(stack)}.")
 
 
+def button(t, n):
+    """A GitHub-style button with a counter, like the Star button."""
+    label, count = "Feed the penguin", str(n)
+    lw, cw = len(label) * 7.6, len(count) * 7.6 + 14
+    w = 40 + lw + 12 + cw + 10
+    body = (f'<rect x=".5" y=".5" width="{w - 1:.0f}" height="31" rx="6" fill="{t["btn"]}" stroke="{t["line"]}"/>'
+            f'<g transform="translate(20,16)"><ellipse rx="7.5" ry="4" fill="{t["ink"]}"/><path d="M6,0 l6,-4.5 v9z" fill="{t["ink"]}"/>'
+            f'<circle cx="-3.5" cy="-.8" r="1.1" fill="{t["btn"]}"/></g>'
+            f'<text x="38" y="21" font-family="{SANS}" font-size="14" font-weight="600" fill="{t["ink"]}" '
+            f'textLength="{lw:.1f}" lengthAdjust="spacingAndGlyphs">{label}</text>'
+            f'<rect x="{38 + lw + 10:.1f}" y="7" width="{cw:.1f}" height="18" rx="9" fill="{t["pill"]}"/>'
+            f'<text x="{38 + lw + 10 + cw / 2:.1f}" y="20.5" text-anchor="middle" font-family="{SANS}" font-size="12" '
+            f'font-weight="600" fill="{t["ink"]}">{count}</text>')
+    return svg(round(w), 32, body, "", f"Feed the penguin a fish. {n} fed so far.")
+
+
 def splice(text, n, v):
+    issue = "https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish."
     return re.sub(r"(<!-- HEADER:START -->).*?(<!-- HEADER:END -->)", lambda m: f"""{m.group(1)}
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-{v}.svg">
   <img src="assets/header-light-{v}.svg" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {n} fish eaten so far.">
 </picture>
+
+<a href="{issue}"><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-{v}.svg">
+  <img src="assets/feed-light-{v}.svg" height="32" alt="Feed the penguin a fish ({n} so far)">
+</picture></a>
 {m.group(2)}""", text, flags=re.S)
 
 
@@ -121,12 +143,13 @@ def render(st):
     ASSETS.mkdir(exist_ok=True)
     # Each version of the header gets its own filename: GitHub's image CDN ignores query strings
     # and caches by path, so a new name is the only way visitors see the new art right away.
-    svgs = {n: header(t, st) for n, t in THEMES.items()}
+    svgs = {f"header-{n}": header(t, st) for n, t in THEMES.items()}
+    svgs.update({f"feed-{n}": button(t, st["count"]) for n, t in THEMES.items()})
     v = hashlib.sha1("".join(svgs.values()).encode()).hexdigest()[:8]
-    for old in ASSETS.glob("header-*.svg"):
+    for old in [*ASSETS.glob("header-*.svg"), *ASSETS.glob("feed-*.svg")]:
         old.unlink()
-    for n, body in svgs.items():
-        (ASSETS / f"header-{n}-{v}.svg").write_text(body)
+    for name, body in svgs.items():
+        (ASSETS / f"{name}-{v}.svg").write_text(body)
     for p in PROJECTS:
         (ASSETS / f"card-{p[0].lower()}.svg").write_text(card(*p))
     README.write_text(splice(README.read_text(), st["count"], v))

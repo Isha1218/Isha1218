@@ -1,11 +1,15 @@
 <!-- HEADER:START -->
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-de0fdb34.svg">
-  <img src="assets/header-light-de0fdb34.svg" width="100%" alt="Ishita Mundra. CS @ UW '28, ex-Affirm, ex-Chipp, ML research, AI apps, Flutter, Python. A penguin catching a fish; 2 fish eaten so far.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-1e0aa44e.svg">
+  <img src="assets/header-light-1e0aa44e.svg" width="100%" alt="Ishita Mundra. CS @ UW '28, ex-Affirm, ex-Chipp, ML research, AI apps, Flutter, Python. A penguin catching a fish; 2 fish eaten so far.">
 </picture>
+
+<a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish."><picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-1e0aa44e.svg">
+  <img src="assets/feed-light-1e0aa44e.svg" height="32" alt="Feed the penguin a fish (2 so far)">
+</picture></a>
 <!-- HEADER:END -->
 
-<sub><a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish.">feed the penguin</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/ishita-mundra">linkedin</a> &nbsp;·&nbsp; <a href="mailto:ishita.mundra@gmail.com">email</a></sub>
 
 <br>
 
@@ -14,3 +18,5 @@
   <a href="https://github.com/Isha1218/aftertaste"><img src="assets/card-aftertaste.svg" width="32%" alt="Aftertaste: the carbon footprint of your food, from one photo. Flutter, PyTorch, Flask."></a>
   <a href="https://github.com/Isha1218/bookflix"><img src="assets/card-bookflix.svg" width="32%" alt="Bookflix: your next book, picked from the ones you loved. Flutter, Flask, Firebase."></a>
 </p>
+
+<sub><a href="https://www.linkedin.com/in/ishita-mundra">linkedin</a> &nbsp;·&nbsp; <a href="mailto:ishita.mundra@gmail.com">email</a></sub>

@@ -62,7 +62,7 @@ _the podium is empty_
 
 **for the planet**
 - [**Aftertaste**](https://github.com/Isha1218/aftertaste): snap a dish or scan a barcode to see its CO₂, land and water footprint, ingredient by ingredient. Flutter + Flask.
-- [**Upcycle AI**](https://github.com/Isha1218/Upcycle-AI): on the workbench right now 🔨
+- [**Upcycle AI**](https://github.com/Isha1218/Upcycle-AI): photograph something you were about to throw out. Gemini Vision spots its reusable parts, then suggests upcycling projects with difficulty, tools and steps. Expo + FastAPI, still on the workbench 🔨
 
 **for people**
 - [**Idle Hands**](https://github.com/Isha1218/idle_hands): watches your webcam with MediaPipe and nudges you when you start picking or biting without realizing.

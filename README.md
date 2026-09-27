@@ -7,7 +7,7 @@
 
 <a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish."><img src="assets/feed.svg" height="36" alt="feed the penguin a fish"></a>
 
-<br><br>
+<br>
 
 <p>
   <a href="https://github.com/Isha1218/BookBroApp"><img src="assets/card-bookbroapp.svg" width="32%" alt="BookBro: a spoiler-free AI companion for whatever you're reading. React, LangChain, FastAPI."></a>

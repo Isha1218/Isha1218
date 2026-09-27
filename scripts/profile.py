@@ -138,16 +138,14 @@ def button(t):
 
 def splice(text, n, v):
     issue = "https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=hit+Submit+and+the+penguin+gets+a+fish."
+    # the feed link must stay on one line: GitHub's markdown splits <a> around a multi-line <picture>
     return re.sub(r"(<!-- HEADER:START -->).*?(<!-- HEADER:END -->)", lambda m: f"""{m.group(1)}
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-{v}.svg">
   <img src="assets/header-light-{v}.svg" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {n} fish eaten so far.">
 </picture>
 
-<a href="{issue}"><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-{v}.svg">
-  <img src="assets/feed-light-{v}.svg" height="32" alt="Feed the penguin a fish">
-</picture></a>
+<a href="{issue}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-{v}.svg"><img src="assets/feed-light-{v}.svg" height="32" alt="Feed the penguin a fish"></picture></a>
 {m.group(2)}""", text, flags=re.S)
 
 

@@ -118,21 +118,25 @@ def button():
 def splice(text, n, v):
     return re.sub(r"(<!-- HEADER:START -->).*?(<!-- HEADER:END -->)", lambda m: f"""{m.group(1)}
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg?v={v}">
-  <img src="assets/header-light.svg?v={v}" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {n} fish eaten so far.">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-{v}.svg">
+  <img src="assets/header-light-{v}.svg" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {n} fish eaten so far.">
 </picture>
 {m.group(2)}""", text, flags=re.S)
 
 
 def render(st):
     ASSETS.mkdir(exist_ok=True)
-    for name, t in THEMES.items():
-        (ASSETS / f"header-{name}.svg").write_text(header(t, st))
+    # Each version of the header gets its own filename: GitHub's image CDN ignores query strings
+    # and caches by path, so a new name is the only way visitors see the new art right away.
+    svgs = {n: header(t, st) for n, t in THEMES.items()}
+    v = hashlib.sha1("".join(svgs.values()).encode()).hexdigest()[:8]
+    for old in ASSETS.glob("header-*.svg"):
+        old.unlink()
+    for n, body in svgs.items():
+        (ASSETS / f"header-{n}-{v}.svg").write_text(body)
     for p in PROJECTS:
         (ASSETS / f"card-{p[0].lower()}.svg").write_text(card(*p))
     (ASSETS / "feed.svg").write_text(button())
-    # the version string changes whenever the art does, so GitHub's image cache can't serve a stale header
-    v = hashlib.sha1(b"".join((ASSETS / f"header-{n}.svg").read_bytes() for n in THEMES)).hexdigest()[:8]
     README.write_text(splice(README.read_text(), st["count"], v))
 
 

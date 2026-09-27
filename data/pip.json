@@ -1,0 +1,15 @@
+{
+ "counts": {
+  "fish": 0,
+  "krill": 0,
+  "book": 0,
+  "snowball": 0
+ },
+ "feeders": {},
+ "log": [],
+ "today": {
+  "date": "",
+  "users": {}
+ },
+ "last": null
+}

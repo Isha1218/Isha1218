@@ -1,0 +1,44 @@
+name: pip
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  snack:
+    if: startsWith(github.event.issue.title, 'pip|')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Feeds can arrive at the same time, so rebuild on the latest commit and retry if the push loses the race.
+      - name: Feed pip
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+          BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git config user.name "pip-the-penguin"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin "$BRANCH" && git reset -q --hard "origin/$BRANCH"
+            python scripts/pip.py
+            git add data/pip.json assets/pip.svg README.md
+            git diff --cached --quiet && break
+            git commit -qm "🐧 @$ISSUE_USER brought pip a snack"
+            git push -q origin "HEAD:$BRANCH" && break
+            sleep $((RANDOM % 5 + 2))
+          done
+
+      - name: Reply and close
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number }}
+        run: gh issue close "$NUMBER" --repo "$GITHUB_REPOSITORY" --comment "$(cat reply.md)"

@@ -1,4 +1,4 @@
-name: feed the penguin
+name: feed Waddles
 
 on:
   issues:
@@ -10,7 +10,8 @@ permissions:
 
 jobs:
   feed:
-    if: startsWith(github.event.issue.title, 'feed the penguin')
+    # old links used "feed the penguin"; keep accepting them
+    if: startsWith(github.event.issue.title, 'feed Waddles') || startsWith(github.event.issue.title, 'feed the penguin')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

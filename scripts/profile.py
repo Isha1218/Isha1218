@@ -108,7 +108,7 @@ def header(t, st):
 <text x="{x}" y="70" font-family="{SANS}" font-size="34" font-weight="600" fill="{t['ink']}">Ishita Mundra</text>
 {''.join(pills)}
 <text x="{x}" y="{cy}" font-family="{SANS}" font-size="13" fill="{t['muted']}">{escape(fed)}</text>"""
-    return svg(w, h, body, PENGUIN_CSS, f"Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {fed}.")
+    return svg(w, h, body, PENGUIN_CSS, f"Ishita Mundra. {', '.join(TAGS)}. Waddles the penguin catching a fish; {fed}.")
 
 
 def card(repo, title, blurb, stack):
@@ -135,25 +135,25 @@ def card(repo, title, blurb, stack):
 
 def button(t):
     """A GitHub-style button, like the Follow button."""
-    label = "Feed the penguin"
+    label = "Feed Waddles the penguin"
     lw = len(label) * 7.6
     w = lw + 32
     body = (f'<rect x=".5" y=".5" width="{w - 1:.0f}" height="31" rx="6" fill="{t["btn"]}" stroke="{t["line"]}"/>'
             f'<text x="16" y="21" font-family="{SANS}" font-size="14" font-weight="600" fill="{t["ink"]}" '
             f'textLength="{lw:.1f}" lengthAdjust="spacingAndGlyphs">{label}</text>')
-    return svg(round(w), 32, body, "", "Feed the penguin a fish")
+    return svg(round(w), 32, body, "", "Feed Waddles the penguin a fish")
 
 
 def splice(text, n, v):
-    issue = "https://github.com/Isha1218/Isha1218/issues/new?title=feed+the+penguin+%F0%9F%90%9F&body=Just+click+Create.+The+penguin+eats+in+about+30+seconds+and+this+issue+closes+itself."
+    issue = "https://github.com/Isha1218/Isha1218/issues/new?title=feed+Waddles+%F0%9F%90%9F&body=Just+click+Create.+Waddles+eats+in+about+30+seconds+and+this+issue+closes+itself."
     # the feed link must stay on one line: GitHub's markdown splits <a> around a multi-line <picture>
     return re.sub(r"(<!-- HEADER:START -->).*?(<!-- HEADER:END -->)", lambda m: f"""{m.group(1)}
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-{v}.svg">
-  <img src="assets/header-light-{v}.svg" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. A penguin catching a fish; {n} fish eaten so far.">
+  <img src="assets/header-light-{v}.svg" width="100%" alt="Ishita Mundra. {', '.join(TAGS)}. Waddles the penguin catching a fish; {n} fish eaten so far.">
 </picture>
 
-<a href="{issue}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-{v}.svg"><img src="assets/feed-light-{v}.svg" height="32" alt="Feed the penguin a fish"></picture></a>
+<a href="{issue}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-{v}.svg"><img src="assets/feed-light-{v}.svg" height="32" alt="Feed Waddles the penguin a fish"></picture></a>
 {m.group(2)}""", text, flags=re.S)
 
 
@@ -179,11 +179,11 @@ def feed(st, user):
     if day["date"] != today:
         st["today"] = day = {"date": today, "users": {}}
     if day["users"].get(user, 0) >= DAILY_LIMIT:
-        return False, "the penguin is full for today. come back tomorrow 🐧"
+        return False, "Waddles is full for today. come back tomorrow 🐧"
     day["users"][user] = day["users"].get(user, 0) + 1
     st["count"] += 1
     st["last"] = user
-    return True, f"🐟 fish #{st['count']} delivered. thanks @{user}! 🐧"
+    return True, f"🐟 fish #{st['count']} delivered. thanks @{user}! love, Waddles 🐧"
 
 
 def main():

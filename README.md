@@ -1,3 +1,5 @@
+hey! i'm ishita
+
 ### tldr
 
 - prev swe intern at [affirm](https://www.affirm.com) on the pricing engineering team

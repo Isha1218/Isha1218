@@ -1,4 +1,4 @@
-hey! i'm ishita
+## hey! i'm ishita
 
 ### tldr
 
@@ -8,7 +8,7 @@ hey! i'm ishita
 - cs student at uw seattle
 - big [penguin](assets/penguin.jpg) person
 
-things i made that you might like
+### things i made that you might like
 
 - [bookbro](https://github.com/Isha1218/BookBroApp) - a spoiler-free book buddy
 - [orbi](https://github.com/Isha1218/mini-sphere) - your agents, but with a face

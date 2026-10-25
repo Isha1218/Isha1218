@@ -1,19 +1,18 @@
-<!-- HEADER:START -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark-8336c372.svg">
-  <img src="assets/header-light-8336c372.svg" width="100%" alt="Ishita Mundra. CS @ UW, prev SWE @ Affirm, CSE TA @ UW, prev SWE @ Chipp, Python, TypeScript, Go, Java, PyTorch, LangChain, RAG, scikit-learn, OpenCV, React, Flutter, FastAPI, AWS, Docker, PostgreSQL, Airflow. Waddles the penguin catching a fish; 6 fish eaten so far.">
-</picture>
+### tl;dr
 
-<a href="https://github.com/Isha1218/Isha1218/issues/new?title=feed+Waddles+%F0%9F%90%9F&body=Just+click+Create.+Waddles+eats+in+about+30+seconds+and+this+issue+closes+itself."><picture><source media="(prefers-color-scheme: dark)" srcset="assets/feed-dark-8336c372.svg"><img src="assets/feed-light-8336c372.svg" height="32" alt="Feed Waddles the penguin a fish"></picture></a>
-<!-- HEADER:END -->
+- prev swe intern at [affirm](https://www.affirm.com) on the pricing engineering team
+- ta for a cse course at uw (i make linked lists and binary trees less scary, or at least try)
+- i build lots of personal projects. lately i've been experimenting with hardware and agents
+- cs student at uw seattle
+- big [penguin](assets/penguin.jpg) person
 
+### things i made that you might like
 
-<br>
+- [bookbro](https://github.com/Isha1218/BookBroApp), a spoiler-free book buddy
+- [orbi](https://github.com/Isha1218/mini-sphere), your agents, but with a face
+- [jump](https://github.com/Isha1218/jump), teleportation for your browser
+- [aftertaste](https://github.com/Isha1218/aftertaste), guilt-tripping your lunch
+- [bookflix](https://github.com/Isha1218/bookflix), netflix for books
+- [and others](https://github.com/Isha1218?tab=repositories)
 
-<p>
-  <a href="https://github.com/Isha1218/BookBroApp"><img src="assets/card-bookbroapp-8336c372.svg" width="32%" alt="BookBro: a spoiler-free AI companion for whatever you're reading. React, LangChain, FastAPI."></a>
-  <a href="https://github.com/Isha1218/aftertaste"><img src="assets/card-aftertaste-8336c372.svg" width="32%" alt="Aftertaste: the carbon footprint of your food, from one photo. Flutter, PyTorch, Flask."></a>
-  <a href="https://github.com/Isha1218/bookflix"><img src="assets/card-bookflix-8336c372.svg" width="32%" alt="Bookflix: your next book, picked from the ones you loved. Flutter, Flask, Firebase."></a>
-</p>
-
-<sub><a href="https://www.linkedin.com/in/ishita-mundra">linkedin</a> &nbsp;·&nbsp; <a href="mailto:ishita.mundra@gmail.com">email</a></sub>
+[linkedin](https://www.linkedin.com/in/ishita-mundra) / [email](mailto:ishita.mundra@gmail.com)

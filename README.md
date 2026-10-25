@@ -8,7 +8,7 @@
 - cs student at uw seattle
 - big [penguin](assets/penguin.jpg) person
 
-### things i made that you might like
+### cool things i made
 
 - [bookbro](https://github.com/Isha1218/BookBroApp) - a spoiler-free reading buddy
 - [orbi](https://github.com/Isha1218/mini-sphere) - your agents, but with a face

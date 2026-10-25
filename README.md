@@ -6,7 +6,7 @@
 - ta for a cse course at uw (i make linked lists and binary trees less scary, or at least try to)
 - i build lots of personal projects. lately i've been experimenting with hardware and agents
 - cs student at uw seattle
-- big [penguin](assets/penguin.jpg) lover
+- big big big [penguin](assets/penguin.jpg) lover
 
 ### cool things i made
 

@@ -6,13 +6,13 @@
 - cs student at uw seattle
 - big [penguin](assets/penguin.jpg) person
 
-### things i made that you might like
+things i made that you might like
 
-- [bookbro](https://github.com/Isha1218/BookBroApp), a spoiler-free book buddy
-- [orbi](https://github.com/Isha1218/mini-sphere), your agents, but with a face
-- [jump](https://github.com/Isha1218/jump), teleportation for your browser
-- [aftertaste](https://github.com/Isha1218/aftertaste), guilt-tripping your lunch
-- [bookflix](https://github.com/Isha1218/bookflix), netflix for books
+- [bookbro](https://github.com/Isha1218/BookBroApp) - a spoiler-free book buddy
+- [orbi](https://github.com/Isha1218/mini-sphere) - your agents, but with a face
+- [jump](https://github.com/Isha1218/jump) - teleportation for your browser
+- [aftertaste](https://github.com/Isha1218/aftertaste) - guilt-tripping your lunch
+- [bookflix](https://github.com/Isha1218/bookflix) - netflix for books
 - [and others](https://github.com/Isha1218?tab=repositories)
 
 [linkedin](https://www.linkedin.com/in/ishita-mundra) / [email](mailto:ishita.mundra@gmail.com)

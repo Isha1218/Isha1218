@@ -1,4 +1,4 @@
-### tl;dr
+### tldr
 
 - prev swe intern at [affirm](https://www.affirm.com) on the pricing engineering team
 - ta for a cse course at uw (i make linked lists and binary trees less scary, or at least try)

@@ -1,6 +1,6 @@
 ## 👋 hey! i'm ishita
 
-### tldr
+### tldr 👀
 
 - prev swe intern at [affirm](https://www.affirm.com) on the pricing engineering team
 - ta for a cse course at uw (i make linked lists and binary trees less scary, or at least try to)
@@ -8,7 +8,7 @@
 - cs student at uw seattle
 - big [penguin](assets/penguin.jpg) person
 
-### cool things i made
+### cool things i made 👾
 
 - [bookbro](https://github.com/Isha1218/BookBroApp) - a spoiler-free reading buddy
 - [orbi](https://github.com/Isha1218/mini-sphere) - your agents, but with a face

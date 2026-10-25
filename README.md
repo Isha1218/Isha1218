@@ -1,4 +1,4 @@
-## hey! i'm ishita
+## 👋 hey! i'm ishita
 
 ### tldr
 
